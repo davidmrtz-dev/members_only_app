@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   #attr_accessor :remember_token, :activation_token
   before_save :downcase_email
   before_create :create_remember_digest
