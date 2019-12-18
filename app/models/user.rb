@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  #attr_accessor :remember_token, :activation_token
   before_save :downcase_email
-  before_create :create_activation_digest
+  before_create :create_remember_digest
   validates :name, presence: true, length: { maximum: 60 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -20,11 +20,6 @@ class User < ApplicationRecord
     end
   end
 
-  def remember
-    self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
-  end
-
   def authenticated?(remember_token)
     return false if remember_digest.nil?
 
@@ -41,8 +36,8 @@ class User < ApplicationRecord
     email.downcase!
   end
 
-  def create_activation_digest
-    self.activation_token = User.new_token
-    self.activation_digest = User.digest(activation_token)
+  def create_remember_digest
+    self.remember_token = User.new_token
+    self.remember_digest = User.digest(remember_token)
   end
 end
