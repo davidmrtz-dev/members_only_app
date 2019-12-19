@@ -10,3 +10,14 @@ User.create!(name: 'Example User',
              email: 'example@railstutorial.org',
              password: 'foobar',
              password_confirmation: 'foobar')
+
+User.create!(name: 'User 1',
+             email: 'user-1@railstutorial.org',
+             password: 'foobar',
+             password_confirmation: 'foobar')
+
+Post.create!(content: 'First post for the first user',
+             user_id: 1)
+
+Post.create!(content: 'First post for the second user',
+             user_id: 2)

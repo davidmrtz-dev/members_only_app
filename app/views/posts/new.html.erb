@@ -1,2 +1,11 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<%= form_for(@post) do |p| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= p.label :content %>
+  <%= p.text_field :content %>
+
+  <%= p.label :user_id %>
+  <%= p.number_field :user_id %>
+
+  <%= p.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
