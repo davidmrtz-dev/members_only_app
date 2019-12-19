@@ -13,10 +13,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new
+    @post.content = post_params[:content]
+    @post.user_id = current_user.id
     if @post.save
-      log_in @post
-      flash[:success] = 'Welcome to the Sample App!'
+      flash[:success] = 'Post created!'
       redirect_to @post
     else
       render 'new'

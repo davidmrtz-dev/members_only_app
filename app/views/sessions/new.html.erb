@@ -1,5 +1,3 @@
-<h1>Sessions#new</h1>
-
 <% flash.each do |message_type, message| %>
     <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
 <% end %>
@@ -14,4 +12,3 @@
 
   <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
