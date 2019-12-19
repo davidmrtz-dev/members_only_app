@@ -39,5 +39,5 @@ If you encounter any problems, let me know, I'll be more than happy to help.
 No live version for this project.
 
 * Collaborators
-  [Alisson Peres](https://github.com/alissonperes)
-  [David Elí](https://github.com/davitomix)
+  * [Alisson Peres](https://github.com/alissonperes)
+  * [David Elí](https://github.com/davitomix)
