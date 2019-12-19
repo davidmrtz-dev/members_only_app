@@ -20,8 +20,7 @@ class PostsController < ApplicationController
 
   # Confirms a valid user.
   def valid_user
-    unless @user && @user.authenticated? #&&
-           # @user.authenticated?(:reset, params[:id])
+    unless @user #&& @user.authenticate(params[:password])
       redirect_to root_url
     end
   end
