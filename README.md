@@ -16,6 +16,12 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
+The seed.yml file has some default users and posts than can be loaded:
+
+```
+$ rails db:seed
+```
+
 Finally, run the test suite to verify that everything is working correctly:
 
 ```
