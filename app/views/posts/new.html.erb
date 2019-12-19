@@ -1,10 +1,15 @@
-<%= form_for(@post) do |p| %>
+<ul>
+  <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
 
+<%= form_for(@post) do |p| %>
   <%= p.label :content %>
-  <%= p.text_field :content %>
+  <%= p.text_area :content %>
 
   <%= p.label :user_id %>
   <%= p.number_field :user_id %>
 
-  <%= p.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= p.submit "submit", class: "btn btn-primary" %>
 <% end %>
