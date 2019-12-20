@@ -1,0 +1,15 @@
+<p>
+  <strong>
+    Content: 
+  </strong>
+  <%= @post.content %>
+</p>
+<p>
+  <% if logged_in? %>
+    <strong>
+      User name:
+    </strong>
+    <%= @post.user.name %>
+  <% end %>
+</p>
+<%= link_to 'All posts', posts_path %>
