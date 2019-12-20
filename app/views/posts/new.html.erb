@@ -1,0 +1,12 @@
+<ul>
+  <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
+<%= form_for(@post) do |p| %>
+  <%= p.label :content %>
+  <%= p.text_area :content %>
+
+  <%= p.submit "submit", class: "btn btn-primary" %>
+<% end %>
