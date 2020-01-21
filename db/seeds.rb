@@ -24,7 +24,7 @@ end
 users = User.all
 10.times do
   users.each do |user|
-    user.posts.create!(content: Faker::Lorem.sentence(word_count: 15),
+    user.posts.create!(content: Faker::Lorem.sentence(word_count: 5),
                         user_id: user.id)
   end
 end

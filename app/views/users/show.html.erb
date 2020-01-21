@@ -6,9 +6,9 @@
   <%= @user.email %>
 </p>
 <p>
-  <% if logged_in? %>
+  <%# if logged_in? %>
     <%= link_to "Log out", logout_path, method: :delete %>
-  <% else %>
+  <%# else %>
     <%= link_to "Log in", login_path %>
-  <% end %>
+  <%# end %>
 </p>
