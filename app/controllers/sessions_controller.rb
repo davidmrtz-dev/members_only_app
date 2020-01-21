@@ -1,20 +1,22 @@
 class SessionsController < ApplicationController
+  before_action :current_user
+
   def new; end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      log_in user
-      redirect_to posts_url
+    if (self.current_user = User.find_by(email: params[:session][:email])&.
+      authenticate(params[:session][:password]))
+      flash[:success] = 'You succesffully logged in.'
+      redirect_to current_user
     else
-      # Create an error message.
-      flash[:danger] = 'Invalid email/password combination'
-      render 'new'
+      flash.now[:failure] = 'Invalid username. Please try again.'
+      render :new
     end
+    #debugger
   end
 
   def destroy
-    log_out
-    redirect_to root_url
+    self.current_user = nil
+    redirect_to root_path
   end
 end

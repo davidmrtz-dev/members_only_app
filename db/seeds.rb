@@ -11,13 +11,20 @@ User.create!(name: 'Example User',
              password: 'foobar',
              password_confirmation: 'foobar')
 
-User.create!(name: 'User 1',
-             email: 'user-1@railstutorial.org',
-             password: 'foobar',
-             password_confirmation: 'foobar')
+9.times do |n|
+ name  = Faker::Name.name
+ email = "example-#{n + 1}@railstutorial.org"
+ password = 'password'
+ User.create!(name: name,
+              email: email,
+              password: password,
+              password_confirmation: password)
+end
 
-Post.create!(content: 'First post for the first user',
-             user_id: 1)
-
-Post.create!(content: 'First post for the second user',
-             user_id: 2)
+users = User.all
+10.times do
+  users.each do |user|
+    user.posts.create!(content: Faker::Lorem.sentence(word_count: 5),
+                        user_id: user.id)
+  end
+end
