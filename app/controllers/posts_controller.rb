@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    #debugger
   end
 
   def show
@@ -13,9 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
-    @post.content = post_params[:content]
-    @post.user_id = post_params[:user_id]
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created!'
       redirect_to @post
