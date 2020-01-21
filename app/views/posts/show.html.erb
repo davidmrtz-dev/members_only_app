@@ -5,11 +5,11 @@
   <%= @post.content %>
 </p>
 <p>
-  <%# if logged_in? %>
+  <% if logged_in? %>
     <strong>
       User name:
     </strong>
     <%= @post.user.name %>
-  <%# end %>
+  <% end %>
 </p>
 <%= link_to 'All posts', posts_path %>
