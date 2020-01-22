@@ -3,12 +3,14 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   protect_from_forgery with: :exception
 
+  # Assign the current user if exists.
   def current_user
     return nil unless session[:user_id]
 
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  # Check if the user is logged.
   def logged_in_user
     unless logged_in?
     flash[:danger] = 'Please log in'
@@ -16,6 +18,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Check if theres is a current user.
   def logged_in?
     !current_user.nil?
   end
