@@ -1,23 +1,27 @@
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <% if logged_in? %>
-        <th>User</th>
-      <% end %>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table>
+      <thead>
+        <tr>
+          <th>Content</th>
+          <% if logged_in? %>
+            <th>User</th>
+          <% end %>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.content %></td>
-        <% if logged_in? %>
-          <td><%= link_to "#{post.user.name}  ( #{post.user.email} )", post.user %></td>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.content %></td>
+            <% if logged_in? %>
+              <td><%= link_to "#{post.user.name}  ( #{post.user.email} )", post.user %></td>
+            <% end %>
+            <td><%= link_to 'Show', post %></td>
+          </tr>
         <% end %>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>
