@@ -1,25 +1,8 @@
-<% if @user.errors.any? %>
-  The form contains <%= pluralize(@user.errors.count, "error") %>.
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_for @user do |f| %>
-
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Sign Up" %>
-<% end %>
+<% provide(:title, 'Sign up') %>
+<% provide(:button_text, 'Create my account') %>
+<h1>Sign up</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form' %>
+  </div>
+</div>
