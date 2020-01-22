@@ -7,26 +7,26 @@ ruby '2.6.4'
 gem 'rails', '~> 5.2.4'
 
 gem 'bcrypt', '~> 3.1.11'
-gem 'carrierwave',  '1.2.2'
-gem 'mini_magick',  '4.7.0'
-gem 'faker', '>= 1.7.3'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate', '1.0.0'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '>=3.3.7'
-gem 'puma', '~> 3.12'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave', '1.2.2'
 gem 'coffee-rails', '~> 4.2'
 gem 'execjs'
-gem 'mini_racer'
-gem 'jquery-rails', '4.3.1'
-gem 'turbolinks', '~> 5'
+gem 'faker', '>= 1.7.3'
 gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'jquery-rails', '4.3.1'
+gem 'mini_magick', '4.7.0'
+gem 'mini_racer'
+gem 'puma', '~> 3.12'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'sqlite3'
 end
 
 group :development do
@@ -44,8 +44,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
   gem 'fog', '1.42'
+  gem 'pg', '0.20.0'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

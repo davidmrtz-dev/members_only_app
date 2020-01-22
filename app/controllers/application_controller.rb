@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
 
   # Check if the user is logged.
   def logged_in_user
-    unless logged_in?
+    return if logged_in?
+
     flash[:danger] = 'Please log in'
     redirect_to login_url
-    end
   end
 
   # Check if theres is a current user.
