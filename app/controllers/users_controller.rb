@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :current_user
   before_action :logged_in_user, only: %i[show]
 
   def new
@@ -9,13 +8,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = 'Account created!'
-      self.current_user = @user
-      redirect_to current_user
+      redirect_to @user
     else
       render 'new'
     end
-    #debugger
+    # debugger
   end
 
   def show

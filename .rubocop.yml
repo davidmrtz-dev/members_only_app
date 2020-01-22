@@ -7,7 +7,8 @@ AllCops:
     - "Rakefile"
   DisplayCopNames: true
 
-Metrics/LineLength:
+Layout/LineLength:
+# Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
@@ -28,8 +29,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/ColonMethodCall:
   Enabled: false
-# Layout/AlignHash:
-Layout/HashAlignment:
+Layout/AlignHash:
+# Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false

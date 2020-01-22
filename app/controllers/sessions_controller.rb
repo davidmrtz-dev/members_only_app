@@ -1,22 +1,21 @@
 class SessionsController < ApplicationController
-  before_action :current_user
-
   def new; end
 
   def create
-    if (self.current_user = User.find_by(email: params[:session][:email])&.
-      authenticate(params[:session][:password]))
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user &.authenticate(params[:session][:password])
       flash[:success] = 'You succesffully logged in.'
-      redirect_to current_user
+      log_in user
+      redirect_to user
     else
       flash.now[:failure] = 'Invalid username. Please try again.'
       render :new
     end
-    #debugger
+    # debugger
   end
 
   def destroy
-    self.current_user = nil
+    log_out
     redirect_to root_path
   end
 end

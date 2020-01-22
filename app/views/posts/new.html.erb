@@ -1,12 +1,11 @@
-<ul>
-  <% @post.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@post) do |p| %>
+      <%= render 'shared/error_messages', object: p.object %>
+      <%= p.label :content %>
+      <%= p.text_area :content %>
 
-<%= form_for(@post) do |p| %>
-  <%= p.label :content %>
-  <%= p.text_area :content %>
-
-  <%= p.submit "submit", class: "btn btn-primary" %>
-<% end %>
+      <%= p.submit "submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
