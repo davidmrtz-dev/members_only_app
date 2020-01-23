@@ -1,2 +1,12 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="center jumbotron">
+  <h1>Members Only</h1>
+
+  <h2>
+    The place where you can write embarrassing posts
+    about something without care anybody can see you are the author,
+    unless they sign up.<br><br>
+    This is the Members Only Project for <a href="https://www.theodinproject.com/courses/ruby-on-rails/lessons/authentication" target="_blank">The Odin Project</a>.
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
