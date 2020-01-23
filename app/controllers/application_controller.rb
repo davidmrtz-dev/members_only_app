@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Check if the user is logged.
+  # Check if the user is logged redirects if not.
   def logged_in_user
     return if logged_in?
 
