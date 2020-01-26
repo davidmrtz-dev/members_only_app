@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: %i[new edit update create destroy]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :logged_in_user, only: %i[new create]
+  before_action :correct_user_or_admin, only: %i[destroy]
 
   def new
     @post = Post.new
@@ -51,9 +51,11 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 
+  #Before filters
+
   # Confirms the correct user.
-  def correct_user
+  def correct_user_or_admin
    post = Post.find(params[:id])
-   redirect_to(posts_url) unless current_user?(post.user)
+   redirect_to(posts_url) unless current_user?(post.user) || current_user.admin?
   end
 end
