@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       redirect_back_or @user
     else
-      flash.now[:failure] = 'Invalid username. Please try again.'
+      flash.now[:danger] = 'Invalid username. Please try again.'
       render :new
     end
     # debugger

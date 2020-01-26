@@ -21,14 +21,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Check if the user is logged redirects if not.
-  def logged_in_user
-    return if logged_in?
-
-    flash[:danger] = 'Please log in'
-    redirect_to login_url
-  end
-
   # Check if theres is a current user.
   def logged_in?
     !current_user.nil?
@@ -72,6 +64,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # Check if the user is logged redirects if not.
+  def logged_in_user
+    return if logged_in?
+
+    flash[:danger] = 'Please log in'
+    redirect_to login_url
+  end
 
   # Confirms an admin user.
   def admin_user
