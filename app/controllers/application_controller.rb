@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   protect_from_forgery with: :exception
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   # Returns the current logged-in user,
   # Or the user corresponding to the remember token cookie (if any).
   def current_user
@@ -54,5 +59,16 @@ class ApplicationController < ActionController::Base
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
+  end
+
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
   end
 end
