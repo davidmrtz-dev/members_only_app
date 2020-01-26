@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :logged_in?
+  helper_method %i[current_user current_user? logged_in?]
   protect_from_forgery with: :exception
 
   # Returns true if the given user is the current user.
