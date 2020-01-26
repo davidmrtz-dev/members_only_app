@@ -23,6 +23,11 @@
               <td><%= link_to "#{post.user.name}  ( #{post.user.email} )", post.user %></td>
             <% end %>
             <td><%= link_to 'Show', post %></td>
+            <% if current_user.admin? && !current_user?(@user) %>
+              <td>
+                <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
