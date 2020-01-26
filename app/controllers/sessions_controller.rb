@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid username. Please try again.'
       render :new
     end
-    # debugger
   end
 
   def destroy
