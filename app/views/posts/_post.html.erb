@@ -2,12 +2,18 @@
   <td><%= post.content %></td>
   <% if logged_in? %>
     <td><%= link_to "#{post.user.name}  ( #{post.user.email} )", post.user %></td>
-      <% if current_user.admin? || current_user?(post.user)%>
-        <td>
-          <%= link_to "delete", post, method: :delete, data: { confirm: "You sure?" } %>
-        </td>
-        <td> | </td>
-      <% end %>
+    <td><%= link_to 'Show', post %></td>
+    <% if current_user?(post.user)%>
+      <td> | </td>
+      <td>
+        <%= link_to "Edit", edit_post_path(post.id), data: { confirm: "You sure?" } %>
+      </td>
+    <% end %>
+    <% if current_user.admin? || current_user?(post.user)%>
+      <td> | </td>
+      <td>
+        <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" } %>
+      </td>
+    <% end %>
   <% end %>
-  <td><%= link_to 'Show', post %></td>
 </tr>
