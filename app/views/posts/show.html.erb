@@ -15,13 +15,13 @@
           User name:
         </strong>
         <%= @post.user.name %>
-      <% end %>
-    </p>
-    <p>
-      <% if current_user.admin? || current_user?(@post.user)%>
-        <td>
-          <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
-        </td>
+          <p>
+            <% if current_user.admin? || current_user?(@post.user)%>
+              <td>
+                <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+              </td>
+            <% end %>
+          </p>
       <% end %>
     </p>
   </div>
