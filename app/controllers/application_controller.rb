@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user
-  helper_method :logged_in?
+  helper_method %i[current_user current_user? logged_in?]
   protect_from_forgery with: :exception
+
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
 
   # Returns the current logged-in user,
   # Or the user corresponding to the remember token cookie (if any).
@@ -15,14 +19,6 @@ class ApplicationController < ActionController::Base
         @current_user = user
       end
     end
-  end
-
-  # Check if the user is logged.
-  def logged_in_user
-    return if logged_in?
-
-    flash[:danger] = 'Please log in'
-    redirect_to login_url
   end
 
   # Check if theres is a current user.
@@ -54,5 +50,26 @@ class ApplicationController < ActionController::Base
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
+  end
+
+  # Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  private
+
+  # Check if the user is logged redirects if not.
+  def logged_in_user
+    return if logged_in?
+
+    flash[:danger] = 'Please log in'
+    redirect_to login_url
   end
 end

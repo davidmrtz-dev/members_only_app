@@ -1,7 +1,7 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   # Create an accessible attribute.
   attr_accessor :remember_token
-  has_many :posts, dependent: :destroy
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 60 }
   validates :email, presence: true, length: { maximum: 255 },
