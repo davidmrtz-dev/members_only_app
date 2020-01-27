@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
-      flash[:success] = "Post updated"
+      flash[:success] = 'Post updated'
       redirect_to @post
     else
       render 'edit'
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    flash[:success] = "Post deleted"
+    flash[:success] = 'Post deleted'
     redirect_to posts_url
   end
 
@@ -51,12 +51,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 
-  #Before filters
+  # Before filters
 
   # Confirms the correct user to destroy.
   def correct_user_or_admin
-   post = Post.find(params[:id])
-   redirect_to(posts_url) unless current_user?(post.user) || current_user.admin?
+    post = Post.find(params[:id])
+    redirect_to(posts_url) unless current_user?(post.user) || current_user.admin?
   end
 
   # Confirms the correct user to edit and update
