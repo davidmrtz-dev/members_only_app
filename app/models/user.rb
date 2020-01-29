@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
   # Returns true if the given token matches the digest.
   def authenticated?(attribute, token)
-    digest = self.send("#{attribute}_digest")
+    digest = send("#{attribute}_digest")
     return false if digest.nil?
 
     BCrypt::Password.new(digest).is_password?(token)
@@ -65,7 +65,7 @@ class User < ApplicationRecord
 
   # Creates and assigns the activation token and digest.
   def create_activation_digest
-    self.activation_token  = User.new_token
+    self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
 end
