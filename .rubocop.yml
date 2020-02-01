@@ -8,7 +8,6 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-# Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
@@ -19,7 +18,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -29,8 +28,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/ColonMethodCall:
   Enabled: false
-Layout/AlignHash:
-# Layout/HashAlignment:
+# Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
@@ -39,4 +38,9 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Naming/PredicateName:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+
+Lint/SafeNavigationConsistency:
   Enabled: false
