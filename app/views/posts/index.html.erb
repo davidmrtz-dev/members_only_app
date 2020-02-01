@@ -2,25 +2,12 @@
 <h1>All posts</h1>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= will_paginate %>
-    <table>
-      <thead>
-        <tr>
-          <th>Posts</th>
-          <% if logged_in? %>
-            <th>User</th>
-          <% end %>
-          <th colspan="1"></th>
-        </tr>
-      </thead>
-
-      <tbody>
+  <div class="col-md-8 col-md-offset-2">
         <% @posts.each do |post| %>
-          <%= render post %>
+          <ol class="microposts">
+            <%= render post %>
+          </ol>
         <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate %>
+        <%= will_paginate @posts %>
   </div>
 </div>
