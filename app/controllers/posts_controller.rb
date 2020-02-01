@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: %i[new create destroy]
+  before_action :logged_in_user, except: %i[index show]
   before_action :correct_user_or_admin, only: %i[destroy]
 
   def new
@@ -19,8 +19,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created!'
-      redirect_to @post
+      redirect_to root_url
     else
+      @feed_items = []
       render 'new'
     end
   end
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     flash[:success] = 'Post deleted'
-    redirect_to posts_url
+    redirect_to request.referrer || root_url
   end
 
   private
