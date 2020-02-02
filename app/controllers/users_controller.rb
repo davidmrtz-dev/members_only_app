@@ -27,7 +27,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    # debugger
   end
 
   def edit

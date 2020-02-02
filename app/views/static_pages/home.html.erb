@@ -10,7 +10,11 @@
     </aside>
     <div class="col-md-8">
       <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
+      <% if current_user.posts.any? %>
+        <ol class="microposts">
+          <%= render @feed_items %>
+        </ol>
+      <% end %>
     </div>
   </div>
 <% else %>

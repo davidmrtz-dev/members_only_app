@@ -3,11 +3,12 @@
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-        <% @posts.each do |post| %>
-          <ol class="microposts">
-            <%= render post %>
-          </ol>
-        <% end %>
-        <%= will_paginate @posts %>
+    <%= will_paginate @posts %>
+      <% @posts.each do |post| %>
+        <ol class="microposts">
+          <%= render post %>
+        </ol>
+      <% end %>
+    <%= will_paginate @posts %>
   </div>
 </div>

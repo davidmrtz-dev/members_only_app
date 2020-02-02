@@ -74,7 +74,7 @@ class User < ApplicationRecord
 
   # Defines a proto-feed.
   def feed
-    Post.where("user_id = ?", id)
+    Post.where("user_id = ?", id).first(15)
   end
 
   private
