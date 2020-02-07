@@ -9,20 +9,16 @@
       </strong>
       <%= @post.content %>
     </p>
-    <p>
-      <% if logged_in? %>
-        <strong>
-          User name:
-        </strong>
-        <%= @post.user.name %>
-          <p>
-            <% if current_user.admin? || current_user?(@post.user)%>
-              <td>
-                <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
-              </td>
-            <% end %>
-          </p>
-      <% end %>
-    </p>
+    <% if logged_in? %>
+      <strong>
+        User name:
+      </strong>
+      <%= @post.user.name %>
+      <p>
+        <% if current_user.admin? || current_user?(@post.user) %>
+            <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+      </p>
+    <% end %>
   </div>
 </div>

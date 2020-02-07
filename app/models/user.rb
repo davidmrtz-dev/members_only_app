@@ -72,6 +72,11 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  # Defines a proto-feed.
+  def feed
+    Post.where('user_id = ?', id).first(20)
+  end
+
   private
 
   # Converts email to all lower-case.

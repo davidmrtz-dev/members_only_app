@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url && return unless @user.activated?
+    @posts = @user.posts.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    # debugger
   end
 
   def edit
