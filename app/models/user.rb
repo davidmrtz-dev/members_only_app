@@ -82,6 +82,21 @@ class User < ApplicationRecord
     Post.where('user_id = ?', id).first(20)
   end
 
+  # Follows a user.
+  def follow(other_user)
+    following << other_user
+  end
+
+  # Unfollow a user.
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?
+    following.include?(other_user)
+  end
+
   private
 
   # Converts email to all lower-case.
