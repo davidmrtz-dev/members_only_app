@@ -96,7 +96,7 @@ class User < ApplicationRecord
   end
 
   # Returns true if the current user is following the other user.
-  def following?
+  def following?(other_user)
     following.include?(other_user)
   end
 
