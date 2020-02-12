@@ -82,7 +82,10 @@ class User < ApplicationRecord
 
   # Defines a proto-feed.
   def feed
-    Post.where('user_id = ?', id).first(20)
+    following_ids = "SELECT followed_id FROM relationships
+                    WHERE  follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids})
+                    OR user_id = :user_id", user_id: id).first(25)
   end
 
   # Follows a user.
