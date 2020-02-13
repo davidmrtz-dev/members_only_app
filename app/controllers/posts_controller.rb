@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
     @posts = Post.paginate(page: params[:page], per_page: 10)
   end
 
@@ -19,11 +18,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created!'
-      redirect_to root_url
+    elsif @post.errors.any?
+      flash[:danger] = "Content can't be blank"
     else
-      @feed_items = current_user.feed
-      render 'static_pages/home'
+      flash[:danger] = 'Something get wrong'
     end
+    redirect_to root_url
   end
 
   def edit
