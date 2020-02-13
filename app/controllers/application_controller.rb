@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   helper_method %i[current_user current_user? logged_in?]
   protect_from_forgery with: :exception
   require 'will_paginate/array'
-  
   # Returns true if the given user is the current user.
   def current_user?(user)
     user == current_user

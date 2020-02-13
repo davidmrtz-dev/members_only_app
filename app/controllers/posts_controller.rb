@@ -18,13 +18,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created!'
-      redirect_to root_url
+    elsif @post.errors.any?
+      flash[:danger] = "Content can't be blank"
     else
-      if @post.errors.any?
-        flash[:danger] = "Content can't be blank"
-        redirect_to root_url
-      end
+      flash[:danger] = 'Something get wrong'
     end
+    redirect_to root_url
   end
 
   def edit
