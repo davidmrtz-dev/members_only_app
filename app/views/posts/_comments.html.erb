@@ -1,9 +1,0 @@
-<h2>Comments</h2>
-<ol class="microposts">
-  <% @post.comments.each do |comment| %>
-      <li>
-        <span class="user"><%= link_to gravatar_for(current_user, size: 50), current_user %></span>
-        <span class="content"> <%= comment.content %> </span> 
-      </li> 
-  <% end %>
-</ol>
