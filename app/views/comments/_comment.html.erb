@@ -5,6 +5,6 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(comment.created_at) %> ago. | 
     <%#= link_to "Edit", edit_post_comment_path(comment.id) %> |
-    <%#= link_to "Delete", @comment, method: :delete, data: { confirm: "You sure?" } %>
+    <%= link_to "Delete", post_comment_path(@post, comment), method: :delete, data: { confirm: "You sure?" } %>
   </span>
 </li> 
