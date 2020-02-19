@@ -3,6 +3,8 @@
   <span class="user"><%= link_to comment.user.name, comment.user %></span>
   <span class="content"> <%= comment.content %> </span> 
   <span class="timestamp">
-    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    Posted <%= time_ago_in_words(comment.created_at) %> ago. | 
+    <%#= link_to "Edit", edit_post_comment_path(comment.id) %> |
+    <%#= link_to "Delete", @comment, method: :delete, data: { confirm: "You sure?" } %>
   </span>
 </li> 
