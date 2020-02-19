@@ -9,14 +9,17 @@
     </p>
     <% if logged_in? %>
       <strong>
-        User name:
+        User:
       </strong>
-      <%= @post.user.name %>
-      <p>
-        <% if current_user.admin? || current_user?(@post.user) %>
-            <%= link_to "delete", @post, method: :delete, data: { confirm: "You sure?" } %>
-        <% end %>
-      </p>
+      <%= @post.user.name %> <br>
+      <% if current_user?(@post.user)%>
+        <span><%= link_to "Edit", edit_post_path(@post.id) %></span>
+        <span>|</span>
+      <% end %>
+      <% if current_user.admin? || current_user?(@post.user)%>
+        <span><%= link_to "Delete", @post, method: :delete, data: { confirm: "You sure?" } %></span>
+        <span>|</span>
+      <% end %>
     <% end %>
   </div>
   <div class="col-md-6 col-md-offset-3">

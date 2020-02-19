@@ -4,14 +4,6 @@
     <span class="user"><%= link_to post.user.name, post.user %></span>
     <span>|</span>
     <span class="user"><%= link_to 'Show', post %></span>
-    <% if current_user?(post.user)%>
-      <span>|</span>
-      <span><%= link_to "Edit", edit_post_path(post.id), data: { confirm: "You sure?" } %></span>
-    <% end %>
-    <% if current_user.admin? || current_user?(post.user)%>
-      <span>|</span>
-      <span><%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" } %></span>
-    <% end %>
   <% end %>
   <span class="content">
     <%= post.content %>

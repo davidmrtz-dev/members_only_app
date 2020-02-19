@@ -3,7 +3,7 @@
   <div class="field">
     <%= f.text_area :content, placeholder: "Create new post..." %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary"%>
+  <%= f.submit "Post", class: "btn btn-primary", data: { confirm: "You sure?" } %>
   <span class="picture">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
